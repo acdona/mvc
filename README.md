@@ -170,7 +170,7 @@ class View
     }
 }
 ```
-### home.html (view da homepage)
+### home.html (VIEW da homepage)
 ```HTML
 <h1>Home do ACD</h1>
 Carregou a home do ACD
@@ -182,6 +182,42 @@ use \App\Controllers\Pages\Home;
 echo Home::getHome();
 ```
 
+### 004 - Passando variáveis para a VIEW
+- Modificamos o método render para receber mais um parâmetro array
+    - Utilizamos array_keys e array_maps para obter as chaves do array
+```PHP
+/**
+     * render
+     * Método responsável por retornar o conteúdo renderizado de uma view
+     * Method responsible for returning the rendered content of a view
+     *
+     * @param  string $view
+     * @param array $vars (string/numeric)
+     * @return string
+     */
+    public static function render($view, $vars = [])
+    {
+        // Conteúdo da View
+        $contentView = self::getContentView($view);
+
+        // Chaves do array e variáveis
+        $keys = array_keys($vars);
+        $keys = array_map(function($item){
+
+            return '{{' . $item . '}}';
+        }, $keys);
+
+        // Retorna conteúdo renderizado
+        return str_replace($keys, array_values($vars), $contentView);
+    }
+```
+- Modificamos o home.php para receber as variáveis passadas
+```HTML
+<h1>Home {{name}}</h1>
+<hr>
+<p>{{description}}</p>
+Carregou a home do ACD
+```
 
 
 

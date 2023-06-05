@@ -35,11 +35,22 @@ class View
      * Method responsible for returning the rendered content of a view
      *
      * @param  string $view
+     * @param array $vars (string/numeric)
      * @return string
      */
-    public static function render($view)
+    public static function render($view, $vars = [])
     {
+        // Conteúdo da View
         $contentView = self::getContentView($view);
-        return $contentView;
+
+        // Chaves do array e variáveis
+        $keys = array_keys($vars);
+        $keys = array_map(function($item){
+
+            return '{{' . $item . '}}';
+        }, $keys);
+
+        // Retorna conteúdo renderizado
+        return str_replace($keys, array_values($vars), $contentView);
     }
 }
