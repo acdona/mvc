@@ -8,7 +8,7 @@ A. C. <b>Doná Dev FSPHP</b>
 
 # Projeto acd-project-name 📱 💻 🖥️ 
 
->Este projeto é um modelo
+>Este projeto é uma estrutura MVS em PHP
 
 Objetivo é a utilização do mesmo em outros projetos
 
@@ -16,11 +16,9 @@ Objetivo é a utilização do mesmo em outros projetos
 
 ### 001 - Preparação do ambiente 
 
-- Criação dos arquivos
-    - index.html
+- Criação dos arquivos para teste e documentação
+    - index.php
     - README.md
-    - script.js
-    - style.css
 
 ## Instalação
 
@@ -34,7 +32,7 @@ Objetivo é a utilização do mesmo em outros projetos
 
 ## Observações
 
-- Para funcionar corretamente, o projeto deve ser em localhost/index.html,
+- Para funcionar corretamente, o projeto deve ser em localhost/mvc/,
 sendo o localhost o endereço do seu servidor. 
 Se for tentado o acesso direto pelo index.html, o navegador apontará erro:
 O acesso ao script foi bloqueado pela política CORS.
