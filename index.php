@@ -15,5 +15,10 @@ ob_start();
 
 require __DIR__ . "/vendor/autoload.php";
 
+use \App\Controllers\Pages\Home;
+
+echo Home::getHome();
+
+
 // Descarrega e desativa o buffer de saída
 ob_end_flush();
