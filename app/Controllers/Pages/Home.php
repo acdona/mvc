@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers\Pages;
 
 use \App\Core\View;
+use \App\Models\Entity\Organization;
 
 /**
  * ACD || Home Class Controller
@@ -15,7 +16,7 @@ use \App\Core\View;
  * @package App\Controllers\Pages
  */
 class Home extends Template
-{    
+{
     /**
      * getHome 
      * Método responsável por retornar o conteúdo (view) da nossa homepage
@@ -25,11 +26,14 @@ class Home extends Template
      */
     public static function getHome()
     {
+        // Organização
+        $obOrganization = new Organization;
+
         // VIEW DA HOME
         $content = View::render('pages/home', [
-            'name' => 'ACD WEB',
-            'description' => 'Canal da WEB https:/antoniocarlosdona.com.br',
-            'site' => 'https:/antoniocarlosdona.com.br'
+            'name'        => $obOrganization->name,
+            'description' => $obOrganization->description,
+            'site'        => $obOrganization->site
         ]);
 
         // Retorna a VIEW da página

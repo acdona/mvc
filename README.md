@@ -332,6 +332,82 @@ class Template
 <hr>
 ACD WEBDEV - 2023 - www.acd
 ```
+### 006 - Criando uma MODEL de exemplo
+- Criando pasta e arquivo
+    - app/Models/Entity/Organization.php
+
+
+```PHP
+ <?php
+
+declare(strict_types=1);
+
+namespace App\Models\Entity;
+
+class Organization
+{
+    /** @var integer $id */
+    public $id = 1;
+
+    /** @var string $name */
+    public $name = "ACD WEBDEV";
+        
+    /** @var string $site */
+    public $site = 'https://antoniocarlosdona';
+
+    /** @var string $description */
+    public $description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iusto aperiam voluptate consequuntur, id officiis soluta asperiores repudiandae dolor perspiciatis illum ab possimus nobis! Eaque placeat asperiores sed ex fugiat.';
+}
+```
+
+- Substituindo os valores da Controller Home.php pelos dados da Model Organization.php
+### Home.php
+```PHP
+<?php
+
+declare(strict_types=1);
+
+namespace App\Controllers\Pages;
+
+use \App\Core\View;
+use \App\Models\Entity\Organization;
+
+/**
+ * ACD || Home Class Controller
+ * Classe responsável pela controller da página home
+ * Class responsible for controlling the homepage
+ * 
+ * @author Antonio Carlos Doná <contato@antoniocarlosdona.com.br>
+ * @package App\Controllers\Pages
+ */
+class Home extends Template
+{
+    /**
+     * getHome 
+     * Método responsável por retornar o conteúdo (view) da nossa homepage
+     * Method responsible for returning the content (view) of our homepage
+     *
+     * @return string
+     */
+    public static function getHome()
+    {
+        // Organização
+        $obOrganization = new Organization;
+
+        // VIEW DA HOME
+        $content = View::render('pages/home', [
+            'name'        => $obOrganization->name,
+            'description' => $obOrganization->description,
+            'site'        => $obOrganization->site
+        ]);
+
+        // Retorna a VIEW da página
+        return parent::getTemplate('ACD-WEB - HOME', $content);
+    }
+}
+```
+
+
 
 
 
