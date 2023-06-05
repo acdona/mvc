@@ -219,6 +219,120 @@ echo Home::getHome();
 Carregou a home do ACD
 ```
 
+### 005 - Criando template, header e footer
+- Criação do Controller Template.php
+```PHP
+<?php
+
+declare(strict_types=1);
+
+namespace App\Controllers\Pages;
+
+use \App\Core\View;
+
+/**
+ * ACD || Template Class Controller
+ * Classe responsável pela controller da página home
+ * Class responsible for controlling the template
+ * 
+ * @author Antonio Carlos Doná <contato@antoniocarlosdona.com.br>
+ * @package App\Controllers\Pages
+ */
+class Template
+{        
+    /**
+     * getHeader
+     * Método responsável por renderizar o topo da página
+     * Method responsible for rendering the page footer 
+     *
+     * @return string
+     */
+    private static function getHeader()
+    {
+        return View::render('pages/header');
+    }
+
+    /**
+     * getFooter
+     * Método responsável por renderizar o rodapé da página
+     * Method responsible for rendering the top of the page 
+     *
+     * @return string
+     */
+    private static function getFooter()
+    {
+        return View::render('pages/footer');
+    }
+
+
+    /**
+     * getTemplate 
+     * Método responsável por retornar o conteúdo (view) da nossa template
+     * Method responsible for returning the content (view) of our template
+     *
+     * @return string
+     */
+    public static function getTemplate($title, $content)
+    {
+        
+        return View::render('pages/_template', [
+            'title' => 'ACD WEB 2023',
+            'header' => self::getHeader(),
+            'footer' => self::getFooter(),
+            'content' => $content
+
+        ]);
+    }
+}
+```
+### _template.html
+```HTML
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>{{title}}</title>
+</head>
+
+<body class="bg-dark text-light">
+
+    <div class="container"></div>
+
+    {{header}}
+
+    {{content}}
+
+    {{footer}}
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+```
+### header.html
+```HTML
+<div class="jumbotron bg-success p-3 my-3">
+
+    <h1>ACD - WEB</h1>
+    <p>Model - View - Controller</p>
+
+</div>
+```
+### footer.html
+```HTML
+<hr>
+ACD WEBDEV - 2023 - www.acd
+```
+
 
 
 ## Instalação

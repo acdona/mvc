@@ -14,7 +14,7 @@ use \App\Core\View;
  * @author Antonio Carlos Doná <contato@antoniocarlosdona.com.br>
  * @package App\Controllers\Pages
  */
-class Home
+class Home extends Template
 {    
     /**
      * getHome 
@@ -25,11 +25,14 @@ class Home
      */
     public static function getHome()
     {
-        
-        return View::render('pages/home', [
+        // VIEW DA HOME
+        $content = View::render('pages/home', [
             'name' => 'ACD WEB',
-            'description' => 'https:/antoniocarlosdona.com.br'
-
+            'description' => 'Canal da WEB https:/antoniocarlosdona.com.br',
+            'site' => 'https:/antoniocarlosdona.com.br'
         ]);
+
+        // Retorna a VIEW da página
+        return parent::getTemplate('ACD-WEB - HOME', $content);
     }
 }
