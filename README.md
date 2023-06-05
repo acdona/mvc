@@ -61,8 +61,20 @@ Objetivo é a utilização do mesmo em outros projetos
 
     ```
     ```TERMINAL
-    composer update
+    > composer update
     ```
+- chamando o autoload pelo index.php
+    ```PHP
+    // Ativa o buffer de saída
+    ob_start();
+
+    require __DIR__ . "/vendor/autoload.php";
+
+
+    // Descarrega e desativa o buffer de saída
+    ob_end_flush();
+    ```
+
 
 
 ## Instalação

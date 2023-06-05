@@ -9,3 +9,11 @@ declare(strict_types=1);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+// Ativa o buffer de saída
+ob_start();
+
+require __DIR__ . "/vendor/autoload.php";
+
+// Descarrega e desativa o buffer de saída
+ob_end_flush();
