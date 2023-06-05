@@ -1,0 +1,22 @@
+{
+	"description": "ACD Project MVC-PHP",
+	"name": "acdona/mvc",
+	"minimum-stability": "dev",
+	"license": "MIT",
+	"authors": [
+		{
+            "name": "Antonio Carlos Dona",
+            "email": "contato@antoniocarlosdona.com.br",
+            "role": "Developer",
+            "homepage": "https://antoniocarlosdona.com.br"
+        }
+	],
+	"config": {
+		"vendor-dir": "vendor"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"App\\": "app/"
+		}
+	}
+}

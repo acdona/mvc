@@ -1,5 +1,6 @@
 <?php
- 
+
+// ativa a checagem de tipo
 declare(strict_types=1);
  
 // Ativa todos os tipo de erros e aviso do php

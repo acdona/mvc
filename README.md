@@ -20,6 +20,51 @@ Objetivo é a utilização do mesmo em outros projetos
     - index.php
     - README.md
 
+### 002 - Preparação do ambiente 
+- Habilitanto todos os erros do PHP no index.php
+    ```PHP
+    <?php 
+    // ativa a checagem de tipo
+    declare(strict_types=1);
+    
+    // Ativa todos os tipo de erros e aviso do php
+    // Deve ser retirado no deploy do projeto
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    ```
+- Criando o composer.json para o autoload
+    ```JSON
+    {
+        "description": "ACD Project MVC-PHP",
+        "name": "acdona/mvc",
+        "minimum-stability": "dev",
+        "license": "MIT",
+        "authors": [
+            {
+                "name": "Antonio Carlos Dona",
+                "email": "contato@antoniocarlosdona.com.br",
+                "role": "Developer",
+                "homepage": "https://antoniocarlosdona.com.br"
+            }
+        ],
+        "config": {
+            "vendor-dir": "vendor"
+        },
+        "autoload" : {
+            "psr-4" : {
+                "App\\": "app/"
+            }
+        }
+    }
+
+    ```
+    ```TERMINAL
+    composer update
+    ```
+
+
 ## Instalação
 
 ### Pré requisitos
