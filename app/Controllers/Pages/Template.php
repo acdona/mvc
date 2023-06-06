@@ -8,7 +8,7 @@ use \App\Core\View;
 
 /**
  * ACD || Template Class Controller
- * Classe responsável pela controller da página home
+ * Classe responsável pela controller a template
  * Class responsible for controlling the template
  * 
  * @author Antonio Carlos Doná <contato@antoniocarlosdona.com.br>
