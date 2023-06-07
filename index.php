@@ -15,13 +15,28 @@ ob_start();
 
 require __DIR__ . "/vendor/autoload.php";
 
+use \App\Http\Router;
+use \App\Http\Response;
 use \App\Controllers\Pages\Home;
 
-$obResponse = new \App\Http\Response(500, "Olá mundo");
+define('URL', 'http://localhost/mvc');
 
-$obResponse->sendResponse();
-exit;
-echo Home::getHome();
+$obRouter = new Router(URL);
+
+//ROTA HOME
+$obRouter->get('/',[
+    function(){
+        return new Response(200, Home::getHome());
+    }
+]);
+
+//IMPRIME O REPONSE DA ROTA
+$obRouter->run()
+         ->sendResponse();
+
+
+
+
 
 
 // Descarrega e desativa o buffer de saída
