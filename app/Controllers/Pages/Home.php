@@ -31,9 +31,10 @@ class Home extends Template
 
         // VIEW DA HOME
         $content = View::render('pages/home', [
-            'name'        => $obOrganization->name,
-            'description' => $obOrganization->description,
-            'site'        => $obOrganization->site
+            'name'        => $obOrganization->getName(),
+            'description' => $obOrganization->getDescription(),
+            'site'        => $obOrganization->getSite(),
+            'situation'   => $obOrganization->getSituation()
         ]);
 
         // Retorna a VIEW da página

@@ -15,10 +15,10 @@ ob_start();
 
 require __DIR__ . "/vendor/autoload.php";
 
-use App\Controllers\Pages\AboutUs;
-// use \App\Controllers\Pages\Home;
+// use App\Controllers\Pages\AboutUs;
+use \App\Controllers\Pages\Home;
 
-echo AboutUs::getAbout();
+echo Home::getHome();
 
 
 // Descarrega e desativa o buffer de saída

@@ -7,14 +7,67 @@ namespace App\Models\Entity;
 class Organization
 {
     /** @var integer $id */
-    public $id = 1;
+    private $id = 1;
 
     /** @var string $name */
-    public $name = "ACD WEBDEV";
-        
+    private $name = "ACD WEBDEV";
+
     /** @var string $site */
-    public $site = 'https://antoniocarlosdona';
+    private $site = 'https://antoniocarlosdona';
 
     /** @var string $description */
-    public $description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iusto aperiam voluptate consequuntur, id officiis soluta asperiores repudiandae dolor perspiciatis illum ab possimus nobis! Eaque placeat asperiores sed ex fugiat.';
+    private $description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iusto aperiam voluptate consequuntur, id officiis soluta asperiores repudiandae dolor perspiciatis illum ab possimus nobis! Eaque placeat asperiores sed ex fugiat.';
+
+    /** @var string $situation */
+    private $situation = 'Cadastro Ativo';
+    
+    /**
+     * getId
+     *
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }    
+
+    /**
+     * getName
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+        
+    /**
+     * getSite
+     *
+     * @return string
+     */
+    public function getSite(): string
+    {
+        return $this->site;
+    }
+        
+    /**
+     * getDescription
+     *
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+        
+    /**
+     * getSituation
+     *
+     * @return string
+     */
+    public function getSituation(): string
+    {
+        return $this->situation;
+    }
 }

@@ -45,12 +45,14 @@ class View
 
         // Chaves do array e variáveis
         $keys = array_keys($vars);
-        $keys = array_map(function($item){
+        // $keys = array_map(function($item){
+        //     return '{{' . $item . '}}';
+        // }, $keys);
 
-            return '{{' . $item . '}}';
-        }, $keys);
+        // transformando em arrow function
+        $transformedKeys = array_map(fn($item) => '{{' . $item . '}}', $keys);
 
         // Retorna conteúdo renderizado
-        return str_replace($keys, array_values($vars), $contentView);
+        return str_replace($transformedKeys, array_values($vars), $contentView);
     }
 }
