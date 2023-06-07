@@ -15,7 +15,6 @@ ob_start();
 
 require __DIR__ . "/vendor/autoload.php";
 
-// use App\Controllers\Pages\AboutUs;
 use \App\Controllers\Pages\Home;
 
 echo Home::getHome();
