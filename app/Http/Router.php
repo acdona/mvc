@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-use Closure;
-use Exception;
+use \Closure;
+use \Exception;
 
 class Router
 {
@@ -62,9 +62,8 @@ class Router
      * setPrefix
      * Método responsável por definir p prefixo das rotas
      * Method responsible for defining the route prefix
-     * @return void
      */
-    private function setPrefix(): void
+    private function setPrefix()
     {
         //INFORMAÇÕES DA URL ATUAL
         $parseUrl = parse_url($this->url);
@@ -81,24 +80,38 @@ class Router
      * @param  string $method
      * @param  string $route
      * @param  array $params
-     * @return void
      */
-    private function addRoute($method, $route, $params)
-    {        
+    private function addRoute($method, $route, $params = [])
+    {
         //VALIDAÇÃO DOS PARÂMETROS
-        foreach($params as $key=>$value) {
-            if($value instanceof Closure){
+        foreach ($params as $key => $value) {
+            if ($value instanceof Closure) {
                 $params['controller'] = $value;
                 unset($params[$key]);
                 continue;
             }
         }
 
-        //PADRÃO DE VALIDAÇÃO DA URL
-        $patternRoute = '/^' . str_replace('/','\/', $route) . '$/';
-        
+        //VARIÁVEIS DA ROTA
+        $params['variables'] = [];
+
+        //PADRÃO DE VALIDAÇÃO DAS VARIÁVEIS DAS ROTAS
+        $patternVariable = '/{(.*?)}/';
+        if(preg_match_all($patternVariable, $route, $matches)){
+            $route = preg_replace($patternVariable, '(.*?)', $route);
+            $params['variables'] = $matches[1];
+        }
+
+        //PADRÃO DE VALIDAÇÃO DA URL        
+        $patternRoute = '/^' . str_replace('/', '\/', $route) . '$/';
+
         //ADICIONA A ROTA DENRO DA CLASSE
         $this->routes[$patternRoute][$method] = $params;
+
+
+
+        //     $params['variables'] = [];
+        //     $patternVariable = "/{(.*?))/";
     }
 
     /**
@@ -113,7 +126,98 @@ class Router
     {
         return $this->addRoute('GET', $route, $params);
     }
-    
+
+    /**
+     * post
+     * Método responsável por definir uma rota de POST
+     * Method responsible for defining a POST route
+     *
+     * @param  string $route
+     * @param  array $params
+     */
+    public function post($route, $params = [])
+    {
+        return $this->addRoute('POST', $route, $params);
+    }
+
+    /**
+     * put
+     * Método responsável por definir uma rota de PUT
+     * Method responsible for defining a PUT route
+     *
+     * @param  string $route
+     * @param  array $params
+     */
+    public function put($route, $params = [])
+    {
+        return $this->addRoute('PUT', $route, $params);
+    }
+
+    /**
+     * delete
+     * Método responsável por definir uma rota de DELETE
+     * Method responsible for defining a DELETE route
+     *
+     * @param  string $route
+     * @param  array $params
+     */
+    public function delete($route, $params = [])
+    {
+        return $this->addRoute('DELETE', $route, $params);
+    }
+
+    /**
+     * getUri
+     * Método responsável por retornar a URI desconsideranto o prefixo
+     * Method responsible for returning the URI disregarding the prefix
+     *
+     * @return string
+     */
+    public function getUri()
+    {
+        //URI DA REQUEST
+        $uri = $this->request->getUri();
+
+        //FATIA A URL COM O PREFIXO
+        $xUri = strlen($this->prefix) ? explode($this->prefix, $uri) : [$uri];
+
+        //RETORNA A URI SEM PREFIXO
+        return end($xUri);
+    }
+
+    /**
+     * getRoute
+     * Método responsável por retornar os dados da rota atual
+     * Method responsible for returning the current route data
+     * 
+     * @return array
+     */
+    private function getRoute()
+    {
+        //URI
+        $uri = $this->getUri();
+
+        //METODO
+        $httpMethod = $this->request->getHttpMethod();
+
+        //VALIDA AS ROTAS
+        foreach ($this->routes as $patternRoute => $methods) {
+            //VERIFICA SE URI BATE COM O PADRAO
+            if (preg_match($patternRoute, $uri)) {
+                //VERIFICA O MÉTODO
+                if ($methods[$httpMethod]) {
+                    //RETORNO DOS PARÂMETROS DA ROTA
+                    return $methods[$httpMethod];
+                }
+                //MÉTODO NÃO PERMITIDO
+                throw new Exception("Método não permitido", 405);
+            }
+        }
+
+        //URL NÃO ENCONTRADA
+        throw new Exception("URL não encontrada", 404);
+    }
+
     /**
      * run
      * Método responsável por executar a rota atual
@@ -121,12 +225,27 @@ class Router
      *
      * @return Response
      */
-    public function run(): Response
+    public function run()
     {
-        try{
-            throw new Exception("Página não encontrada", 404);
-            //CONTINUA...................
-        }catch(Exception $e){
+        try {
+            //OBTEM A ROTA ATUAL
+            $route = $this->getRoute();
+
+            echo "<pre>";
+            print_r($route);
+            echo "</pre>";exit;
+
+            //VERIFICA O CONTROLADOR
+            if(!isset($route['controller'])){
+                throw new Exception("A URL não pode ser processada", 500);
+            }
+
+            //ARGUMENTOS DA FUNÇÃO
+            $args = [];
+
+            //RETORNA A EXECUÇÃO DA FUNÇÃO
+            return call_user_func($route['controller'], $args);
+        } catch (Exception $e) {
             return new Response($e->getCode(), $e->getMessage());
         }
     }

@@ -77,35 +77,32 @@ class Request
      * Método responsável por retornar a URI da requisição
      * Method responsible for returning the request URI
      *
-     * @return void
      */
     public function getUri()
     {
-        return $this->getUri();
+        return $this->uri;
     }
     
     /**
      * getQueryParams
      * Método responsável por retornar os parâmetros da requisição
      * Method responsible for returning the request parameters
-     *
-     * @return void
      */
     public function getQueryParams()
     {
-        return $this->getQueryParams();
+        return $this->queryParams;
     }
     
     /**
      * getPostVars
-     * Método resonsávelpor retornar as variáveis POST da requisição
+     * Método resonsável por retornar as variáveis POST da requisição
      * Method responsible for returning the POST variables of the request
      *
      * @return void
      */
     public function getPostVars() 
     {
-        return $this->getPostVars();
+        return $this->postVars;
     }
     
     /**
@@ -117,6 +114,6 @@ class Request
      */
     public function getHeaders()
     {
-        return $this->getHeaders();
+        return $this->headers;
     }
 }

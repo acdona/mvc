@@ -31,13 +31,10 @@ class Home extends Template
 
         // VIEW DA HOME
         $content = View::render('pages/home', [
-            'name'        => $obOrganization->getName(),
-            'description' => $obOrganization->getDescription(),
-            'site'        => $obOrganization->getSite(),
-            'situation'   => $obOrganization->getSituation()
+            'name'        => $obOrganization->getName()
         ]);
 
         // Retorna a VIEW da página
-        return parent::getTemplate('ACD-WEB - HOME', $content);
+        return parent::getTemplate('HOME > ACD WEBDEV', $content);
     }
 }

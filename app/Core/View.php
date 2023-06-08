@@ -13,7 +13,26 @@ namespace App\Core;
  * @package App\Core
  */
 class View
-{
+{    
+
+    /**
+     * vars
+     * Variáveis padrões da VIEW
+     * 
+     * @var array
+     */
+    private static $vars = [];
+
+    /**
+     * init
+     * Método responsável por definir os dados iniciais da classe
+     *
+     * @param  array $vars
+     */
+    public static function init($vars = [])
+    {
+        self::$vars = $vars;
+    }
     
     /**
      * getContentView
@@ -42,6 +61,9 @@ class View
     {
         // Conteúdo da View
         $contentView = self::getContentView($view);
+
+        //MERGE DE VARIÁVEIS DA VIEW
+        $vars = array_merge(self::$vars, $vars);
 
         // Chaves do array e variáveis
         $keys = array_keys($vars);

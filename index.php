@@ -16,28 +16,24 @@ ob_start();
 require __DIR__ . "/vendor/autoload.php";
 
 use \App\Http\Router;
-use \App\Http\Response;
-use \App\Controllers\Pages\Home;
+use \App\Core\View;
 
 define('URL', 'http://localhost/mvc');
 
-$obRouter = new Router(URL);
+//DEFINE O VALOR PADRÃO DAS VARIÁVEIS
+View::init([
+    'URL' => URL
 
-//ROTA HOME
-$obRouter->get('/',[
-    function(){
-        return new Response(200, Home::getHome());
-    }
 ]);
 
-//IMPRIME O REPONSE DA ROTA
-$obRouter->run()
-         ->sendResponse();
+//INICIA O ROUTER
+$obRouter  = new Router(URL);
 
+//INCLUI AS ROTAS DE PÁGINAS
+include __DIR__ . '/routes/pages.php';
 
-
-
-
+// //IMPRIME O REPONSE DA ROTA
+$obRouter->run()->sendResponse();
 
 // Descarrega e desativa o buffer de saída
 ob_end_flush();
