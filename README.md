@@ -741,6 +741,16 @@ class Response
 011 - Criando a classe de rotas
 - app\Html\Router.php
 
+012 - Criando o CRUD
+- instalando o dot-env 
+    - composer require william-costa/dot-env
+- instalando database-manager
+    - composer require william-costa/database-manager
+- criando arquivo includes/app.php
+- criando arquivo app/Controllers/Testimony.php
+- criando Views/pages/testimony/item.html
+
+
 
 ## Instalação
 

@@ -13,18 +13,12 @@ error_reporting(E_ALL);
 // Ativa o buffer de saída
 ob_start();
 
-require __DIR__ . "/vendor/autoload.php";
+
+
+
+require __DIR__ . '/includes/app.php';
 
 use \App\Http\Router;
-use \App\Core\View;
-
-define('URL', 'http://localhost/mvc');
-
-//DEFINE O VALOR PADRÃO DAS VARIÁVEIS
-View::init([
-    'URL' => URL
-
-]);
 
 //INICIA O ROUTER
 $obRouter  = new Router(URL);
@@ -34,6 +28,12 @@ include __DIR__ . '/routes/pages.php';
 
 // //IMPRIME O REPONSE DA ROTA
 $obRouter->run()->sendResponse();
+
+
+
+
+
+
 
 // Descarrega e desativa o buffer de saída
 ob_end_flush();

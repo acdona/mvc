@@ -98,8 +98,8 @@ class Router
 
         //PADRÃO DE VALIDAÇÃO DAS VARIÁVEIS DAS ROTAS
         $patternVariable = '/{(.*?)}/';
-        
-        if(preg_match_all($patternVariable, $route, $matches)){
+
+        if (preg_match_all($patternVariable, $route, $matches)) {
             $route = preg_replace($patternVariable, '(.*?)', $route);
             $params['variables'] = $matches[1];
         }
@@ -163,10 +163,10 @@ class Router
         return $this->addRoute('DELETE', $route, $params);
     }
 
-    public function catch($route, $params = []){
+    public function catch($route, $params = [])
+    {
 
         $this->addRoute('CATCH', $route, $params);
-
     }
 
     /**
@@ -204,19 +204,19 @@ class Router
         $httpMethod = $this->request->getHttpMethod();
 
         //VALIDA AS ROTAS
-        foreach ($this->routes as $patternRoute=>$methods) {
+        foreach ($this->routes as $patternRoute => $methods) {
             //VERIFICA SE URI BATE COM O PADRAO
             if (preg_match($patternRoute, $uri, $matches)) {
                 //VERIFICA O MÉTODO
                 if (isset($methods[$httpMethod])) {
-             
+
                     //REMOVE A PRIMEIRA POSIÇÃO
                     unset($matches[0]);
-                  
+
                     //VARIÁVEIS PROCESSADAS
-                  $keys = $methods[$httpMethod]['variables'];
-                  $methods[$httpMethod]['variables'] = array_combine($keys, $matches);
-                  $methods[$httpMethod]['variables']['request'] = $this->request;
+                    $keys = $methods[$httpMethod]['variables'];
+                    $methods[$httpMethod]['variables'] = array_combine($keys, $matches);
+                    $methods[$httpMethod]['variables']['request'] = $this->request;
 
                     //RETORNO DOS PARÂMETROS DA ROTA
                     return $methods[$httpMethod];
@@ -244,7 +244,7 @@ class Router
             $route = $this->getRoute();
 
             //VERIFICA O CONTROLADOR
-            if(!isset($route['controller'])){
+            if (!isset($route['controller'])) {
                 throw new Exception("A URL não pode ser processada", 500);
             }
 
@@ -254,7 +254,7 @@ class Router
             //REFLECTION
             $reflection = new ReflectionFunction($route['controller']);
 
-            foreach($reflection->getParameters() as $parameter){
+            foreach ($reflection->getParameters() as $parameter) {
                 $name = $parameter->getName();
                 $args[$name] = $route['variables'][$name] ?? '';
             }
