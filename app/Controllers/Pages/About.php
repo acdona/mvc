@@ -19,12 +19,12 @@ class About extends Template
 {
     /**
      * getAbout 
-     * Método responsável por retornar o conteúdo (view) da nossa aboutpage
+     * Método responsável por retornar o conteúdo (view) da nossa página sobre
      * Method responsible for returning the content (view) of our aboutpage
      *
      * @return string
      */
-    public static function getHome()
+    public static function getAbout()
     {
         // Organização
         $obOrganization = new Organization;
