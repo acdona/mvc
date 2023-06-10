@@ -17,17 +17,17 @@ use \App\Core\View;
 use \WilliamCosta\DotEnv\Environment;
 use \WilliamCosta\DatabaseManager\Database;
 
+//CARREGA VARIÁVEIS DE AMBIENTE
+Environment::load(__DIR__ . '/../');
+
 //DEFINE AS CONFIGURAÇÕES DE BANCO DE DADOS
 Database::config(
     getenv('DB_HOST'), 
-    'project_mvc',
-    'root',
+    getenv('DB_NAME'),
+    getenv('DB_USER'),
     getenv('DB_PASS'),
     getenv('DB_PORT')
 );
-
-//CARREGA VARIÁVEIS DE AMBIENTE
-Environment::load(__DIR__ . '/../');
 
 //DEFINE A CONSTANTE DE URL
 define('URL', getenv('URL'));
@@ -35,5 +35,4 @@ define('URL', getenv('URL'));
 //DEFINE O VALOR PADRÃO DAS VARIÁVEIS
 View::init([
     'URL' => URL
-
 ]);

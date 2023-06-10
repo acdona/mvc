@@ -13,9 +13,6 @@ error_reporting(E_ALL);
 // Ativa o buffer de saída
 ob_start();
 
-
-
-
 require __DIR__ . '/includes/app.php';
 
 use \App\Http\Router;
