@@ -750,7 +750,9 @@ class Response
 - criando arquivo app/Controllers/Testimony.php
 - criando Views/pages/testimony/item.html
 
-
+013 - Implementando Middlewares
+- criando arquivo app/Httmp/Middleware/Queue.php
+- criando middlewares default
 
 ## Instalação
 
