@@ -16,9 +16,9 @@ use \WilliamCosta\DatabaseManager\Pagination;
  * @author Antonio Carlos Doná <contato@antoniocarlosdona.com.br>
  * @package App\Controllers\Pages
  */
-class Testimony extends Template
+class Testimony extends Page
 {
-    
+
     /**
      * getTestimonyItems
      * Método responsável por obter a renderização dos itens de depoimentos para a página
@@ -46,9 +46,9 @@ class Testimony extends Template
         $results = EntityTestimony::getTestimonies(null, 'id DESC', $obPagination->getLimit());
 
         //RENDERIZA O ITEM
-        while($obTestimony = $results->fetchObject(EntityTestimony::class)){
-               // VIEW DE DEPOIMENTOS
-               $itens .= View::render('pages/testimony/item', [
+        while ($obTestimony = $results->fetchObject(EntityTestimony::class)) {
+            // VIEW DE DEPOIMENTOS
+            $itens .= View::render('pages/testimony/item', [
                 'username' => $obTestimony->username,
                 'message'  => $obTestimony->message,
                 'date'     => date('d/m/Y H:i:s', strtotime($obTestimony->date))
@@ -57,7 +57,6 @@ class Testimony extends Template
 
         //RETORNA OS DEPOIMENTOS
         return $itens;
-
     }
 
     /**
@@ -77,9 +76,9 @@ class Testimony extends Template
         ]);
 
         // Retorna a VIEW da página
-        return parent::getTemplate('DEPOIMENTOS > ACD WEBDEV', $content);
+        return parent::getPage('DEPOIMENTOS > ACD WEBDEV', $content);
     }
-    
+
     /**
      * insertTestimony
      * Método responsável por cadastrar um depoimento
@@ -100,6 +99,6 @@ class Testimony extends Template
         $obTestimony->cadastrar();
 
         //RETORNA A PÁGINA DE LISTAGEM DE DEPOIMENTOS
-        return self::getTestimonies($request);        
+        return self::getTestimonies($request);
     }
 }

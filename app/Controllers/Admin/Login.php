@@ -8,8 +8,9 @@ use app\Core\View;
 use \App\Models\Entity\User;
 use \App\Session\Admin\Login as SessionAdminLogin;
 
-class Login extends Template {
-    
+class Login extends Page
+{
+
     /**
      * getLogin
      * Método responsável por retornar a renderização da página de login
@@ -30,9 +31,9 @@ class Login extends Template {
         ]);
 
         //RETORNA A PÁGINA COMPLETA
-        return parent::getTemplate('Login > ACD WEBDEV', $content);
+        return parent::getPage('Login > ACD WEBDEV', $content);
     }
-    
+
     /**
      * setLogin
      * Método responsável por definir o login di usuário
@@ -50,22 +51,22 @@ class Login extends Template {
         // BUSCA USUARIO PELO EMAIL
         $obUser = User::getUserByEmail($email);
 
-        if(!$obUser instanceof User){
+        if (!$obUser instanceof User) {
             return self::getLogin($request, 'E-mail ou senha inválidos');
-        }    
-        
+        }
+
         //VERIFICA A SENHA DO USUÁRIO
-        if(!password_verify($password, $obUser->password)){
+        if (!password_verify($password, $obUser->password)) {
             return self::getLogin($request, 'E-mail ou senha inválidos');
         }
 
         //CRIA A SESSÃO DE LOGIN
         SessionAdminLogin::login($obUser);
-        
+
         //REDIRECIONA O USUARIO PARA A HOME DO ADMIN
         $request->getRouter()->redirect('/admin');
     }
-    
+
     /**
      * setLogout
      * Método responsável por deslogar o usuário
@@ -76,7 +77,7 @@ class Login extends Template {
     {
         //DESTROI A SESSÃO DE LOGIN
         SessionAdminLogin::logout();
-        
+
         //REDIRECIONA O USUARIO PARA A TELA DE LOGIN
         $request->getRouter()->redirect('/admin/login');
     }

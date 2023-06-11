@@ -15,7 +15,7 @@ use \App\Models\Entity\Organization;
  * @author Antonio Carlos Doná <contato@antoniocarlosdona.com.br>
  * @package App\Controllers\Pages
  */
-class Home extends Template
+class Home extends Page
 {
     /**
      * getHome 
@@ -35,6 +35,6 @@ class Home extends Template
         ]);
 
         // Retorna a VIEW da página
-        return parent::getTemplate('HOME > ACD WEBDEV', $content);
+        return parent::getPage('HOME > ACD WEBDEV', $content);
     }
 }

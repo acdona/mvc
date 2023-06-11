@@ -6,8 +6,9 @@ namespace App\Controllers\Admin;
 
 use app\Core\View;
 
-class Home extends Template {
-        
+class Home extends Page
+{
+
     /**
      * getHome
      * Método responsável por renderizar a view de Home do painel
@@ -18,9 +19,9 @@ class Home extends Template {
     public static function getHome($request)
     {
         //CONTEÚDO DA HOME
-        $content = View::render('admin/modules/home/index',[]);
+        $content = View::render('admin/modules/home/index', []);
 
         //RETORNA A PÁGINA COMPLETA
-        return parent::getTemplate('Home - ACD WEB DEV', $content);
+        return parent::getPanel('Home - ACD WEB DEV', $content, 'home');
     }
 }

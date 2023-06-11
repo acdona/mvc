@@ -15,7 +15,7 @@ use \App\Models\Entity\Organization;
  * @author Antonio Carlos Doná <contato@antoniocarlosdona.com.br>
  * @package App\Controllers\Pages
  */
-class About extends Template
+class About extends Page
 {
     /**
      * getAbout 
@@ -38,6 +38,6 @@ class About extends Template
         ]);
 
         // Retorna a VIEW da página
-        return parent::getTemplate('SOBRE - ACD-WEB', $content);
+        return parent::getPage('SOBRE - ACD-WEB', $content);
     }
 }

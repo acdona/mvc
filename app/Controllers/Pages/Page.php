@@ -7,14 +7,14 @@ namespace App\Controllers\Pages;
 use \App\Core\View;
 
 /**
- * ACD || Template Class Controller
- * Classe responsável pela controller a template
- * Class responsible for controlling the template
+ * ACD || Page Class Controller
+ * Classe responsável pela controller a page
+ * Class responsible for controlling the page
  * 
  * @author Antonio Carlos Doná <contato@antoniocarlosdona.com.br>
  * @package App\Controllers\Pages
  */
-class Template
+class Page
 {
     /**
      * getHeader
@@ -73,7 +73,7 @@ class Template
         return View::render('pages/pagination/box', [
             'links' => $links
         ]);
-    }   
+    }
 
     /**
      * getFooter
@@ -89,16 +89,16 @@ class Template
 
 
     /**
-     * getTemplate 
-     * Método responsável por retornar o conteúdo (view) da nossa template
-     * Method responsible for returning the content (view) of our template
+     * getPage 
+     * Método responsável por retornar o conteúdo (view) da nossa page
+     * Method responsible for returning the content (view) of our page
      *
      * @return string
      */
-    public static function getTemplate($title, $content)
+    public static function getPage($title, $content)
     {
 
-        return View::render('pages/_template', [
+        return View::render('pages/page', [
             'title' => $title,
             'header' => self::getHeader(),
             'content' => $content,

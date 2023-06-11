@@ -64,9 +64,9 @@ echo Home::getHome();
     - Utilizamos array_keys e array_maps para obter as chaves do array
 - Modificamos o home.php para receber as variáveis passadas
 
-### 005 - Criando template, header e footer
-- Criação do Controller app/Controllers/Pages/Template.php
-- Criação da app\Views\__template.html
+### 005 - Criando page, header e footer
+- Criação do Controller app/Controllers/Pages/Page.php
+- Criação da app\Views\_page.html
 - Criação do app\Views\header.html
 - Criação do app\Views\footer.html
 
@@ -108,10 +108,10 @@ composer require william-costa/database-manager
 - criando middlewares default
 
 ### 014 - Autenticação de usuários
-- criando arquivo routes/admin/Template.php
+- criando arquivo routes/admin/Page.php
 - criando arquivo routes/admin/Login.php
 - criando a Model app/Models/Entity/User.php
-- criando a View app/Views/admin/_template.html
+- criando a View app/Views/admin/page.html
 - criando a View app/Views/admin/status.html
 - criando a View app/Views/admin/login.html
 - validando e-mail
@@ -134,6 +134,7 @@ composer require william-costa/database-manager
 - criando pasta routes/admin para separa o projeto em módulos
 - criando arquivo routes/admin/login.php
 - criando arquivo routes/admin/home.php
+- criando arquivo de view app\Views\admin\panel.html
 
 
 
