@@ -130,6 +130,10 @@ composer require william-costa/database-manager
 - criando o controlador app/Controllers/Admin/Alert.php
 - criando os métodos de sucesso e erro das mensagens
 
+### 018 - Criando a página de admin
+- criando pasta routes/admin para separa o projeto em módulos
+- criando arquivo routes/admin/login.php
+- criando arquivo routes/admin/home.php
 
 
 
