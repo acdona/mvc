@@ -135,6 +135,9 @@ composer require william-costa/database-manager
 - criando arquivo routes/admin/login.php
 - criando arquivo routes/admin/home.php
 - criando arquivo de view app\Views\admin\panel.html
+- criando arquivo de view app\Views\admin\menu\box.html
+- criando arquivo de view app\Views\admin\menu\link.html
+- Criando arquivo de view app\Views\admin\modules\home\index.html
 
 
 
