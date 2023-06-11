@@ -141,6 +141,7 @@ composer require william-costa/database-manager
 
 ### 019 Criando as rotas para depoimentos de usuários
 - Criando arquivo de view app\Views\admin\modules\testimonies\index.html
+- Criando arquivo de view app\Views\admin\modules\testimonies\item.html
 
 
 #
