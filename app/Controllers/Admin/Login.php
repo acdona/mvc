@@ -6,6 +6,7 @@ namespace App\Controllers\Admin;
 
 use app\Core\View;
 use \App\Models\Entity\User;
+use \App\Session\Admin\Login as SessionAdminLogin;
 
 class Login extends Template {
     
@@ -59,5 +60,11 @@ class Login extends Template {
         if(!password_verify($password, $obUser->password)){
             return self::getLogin($request, 'E-mail ou senha inválidos');
         }
+
+        //CRIA A SESSÃO DE LOGIN
+        SessionAdminLogin::login($obUser);
+        
+        //REDIRECIONA O USUARIO PARA A HOME DO ADMIN
+        $request->getRouter()->redirect('/admin');
     }
 }

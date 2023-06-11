@@ -108,14 +108,18 @@ composer require william-costa/database-manager
 - criando middlewares default
 
 ### 014 - Autenticação de usuários
-    - criando arquivo routes/admin/Template.php
-    - criando arquivo routes/admin/Login.php
-    - criando a Model app/Models/Entity/User.php
-    - criando a View app/Views/admin/_template.html
-    - criando a View app/Views/admin/status.html
-    - criando a View app/Views/admin/login.html
-    - validando e-mail
+- criando arquivo routes/admin/Template.php
+- criando arquivo routes/admin/Login.php
+- criando a Model app/Models/Entity/User.php
+- criando a View app/Views/admin/_template.html
+- criando a View app/Views/admin/status.html
+- criando a View app/Views/admin/login.html
+- validando e-mail
     - validando senha
+
+### 015 - Criando sessão de login do usuário
+- criando classe app\Session\Admin\Login.php
+
 
 #
 
