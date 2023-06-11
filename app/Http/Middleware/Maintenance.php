@@ -20,6 +20,7 @@
        if(getenv('MAINTENANCE') == 'true') {
         throw new \Exception("Página de manutenção. Tente novamente mais tarde.", 200);
        }
+       
        //EXECUTA O PRÓXIMO NÍVEL DO MIDDLEWARE
         return $next($request);
     }
