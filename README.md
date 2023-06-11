@@ -120,6 +120,11 @@ composer require william-costa/database-manager
 ### 015 - Criando sessão de login do usuário
 - criando classe app\Session\Admin\Login.php
 
+### 016 - Criando middlewares de controle de sessão
+- criando arquivo app/Http/Middleware/RequireAdminLogin.php
+- criando arquivo app/Http/Middleware/RequireAdminLogout.php
+
+
 
 #
 

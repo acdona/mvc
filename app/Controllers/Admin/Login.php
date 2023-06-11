@@ -67,4 +67,19 @@ class Login extends Template {
         //REDIRECIONA O USUARIO PARA A HOME DO ADMIN
         $request->getRouter()->redirect('/admin');
     }
+    
+    /**
+     * setLogout
+     * Método responsável por deslogar o usuário
+     *
+     * @rparam Request $request
+     */
+    public static function setLogout($request)
+    {
+        //DESTROI A SESSÃO DE LOGIN
+        SessionAdminLogin::logout();
+        
+        //REDIRECIONA O USUARIO PARA A TELA DE LOGIN
+        $request->getRouter()->redirect('/admin/login');
+    }
 }
