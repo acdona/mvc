@@ -21,9 +21,7 @@ class Login extends Template {
     public static function getLogin($request, $errorMessage = null)
     {
         //STATUS
-        $status = !is_null($errorMessage) ? View::render('admin/login/status',[
-            'message' => $errorMessage
-        ]) : '';
+        $status = !is_null($errorMessage) ? Alert::getError($errorMessage) : '';
 
 
         //CONTEÚDO DA PÁGINA DE LOGIN

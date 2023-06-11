@@ -124,6 +124,13 @@ composer require william-costa/database-manager
 - criando arquivo app/Http/Middleware/RequireAdminLogin.php
 - criando arquivo app/Http/Middleware/RequireAdminLogout.php
 
+### 017 - Implementando o painel admin
+- alterando pasta para Views\admin\login para ...\alert
+- alterando o html Wiews\admin\alert\status.html para receber a variável type
+- criando o controlador app/Controllers/Admin/Alert.php
+- criando os métodos de sucesso e erro das mensagens
+
+
 
 
 #
