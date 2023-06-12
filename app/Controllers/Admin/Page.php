@@ -45,7 +45,7 @@ class Page
             'content' => $content
         ]);
     }
-        
+
     /**
      * getMenu
      * Método responsável por renderizar a view do menu do painel
@@ -60,8 +60,8 @@ class Page
         $links = '';
 
         //ITERA OS MÓDULOS
-        foreach(self::$modules as $hash=>$module){
-            $links .= View::render('admin/menu/link',[
+        foreach (self::$modules as $hash => $module) {
+            $links .= View::render('admin/menu/link', [
                 'label' => $module['label'],
                 'link' => $module['link'],
                 'current' => $hash == $currentModule ? 'text-success' : ''
@@ -74,7 +74,7 @@ class Page
             'links' => $links
         ]);
     }
-    
+
     /**
      * getPanel
      * Método responsável por renderizar a view do Painel com conteúdos dinâmicos
@@ -94,5 +94,52 @@ class Page
 
         //RETORNA A PÁGINA RENDERIZADA
         return self::getPage($title, $contentPanel);
+    }
+
+    /**
+     * getPagination
+     * Método responsável por renderizar o layout de páginação
+     *
+     * @param  Reques $request
+     * @param  Pagination $obPagination
+     * @return string
+     */
+    public static function getPagination($request, $obPagination)
+    {
+        //PÁGINAS
+        $pages = $obPagination->getPages();
+
+        // VERIFICA A QUANTIDADE DE PÁGINAS
+        if (count($pages) <= 1) return '';
+
+        //LINKS
+        $links = '';
+
+        //URL ATUAL (SEM GETS)
+        $url = $request->getRouter()->getCurrentUrl();
+
+        //GET
+        $queryParams = $request->getQueryParams();
+
+        //RENDERIZA OS LINKS
+        foreach ($pages as $page) {
+            //ALTERA A PÁGINA
+            $queryParams['page'] = $page['page'];
+
+            //LINK
+            $link = $url . '?' . http_build_query($queryParams);
+
+            //VIEW
+            $links .= View::render('admin/pagination/link', [
+                'page' => $page['page'],
+                'link' => $link,
+                'active' => ($page['current'] ? 'active' : '')
+            ]);
+        }
+
+        //RENDERIZA BOX DE PAGINAÇÃO
+        return View::render('admin/pagination/box', [
+            'links' => $links
+        ]);
     }
 }
