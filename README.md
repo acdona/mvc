@@ -145,6 +145,12 @@ composer require william-costa/database-manager
 - criando arquivo de view app\Views\admin\pagination\box.html
 - criando arquivo de view app\Views\admin\pagination\link.html
 - criando arquivo de view app\Views\admin\pagination\form.html
+- criando arquivo de rota routes\admin\users.php
+- criando controller app\Controllers\Admin\Users.php
+- criando arquivos de views app\Views\admin\modules\users\index.httml
+- criando arquivos de views app\Views\admin\modules\users\item.httml
+- criando arquivos de views app\Views\admin\modules\users\form.httml
+- criando arquivos de views app\Views\admin\modules\users\delete.httml
 
 #
 
