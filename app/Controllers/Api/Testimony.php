@@ -1,15 +1,15 @@
 <?php
- 
- declare(strict_types=1);
- 
- namespace App\Controllers\Api;
 
- use \App\Models\Entity\Testimony as EntityTestimony;
- use \WilliamCosta\DatabaseManager\Pagination;
+declare(strict_types=1);
 
- class Testimony extends Api
- {    
-     /**
+namespace App\Controllers\Api;
+
+use \App\Models\Entity\Testimony as EntityTestimony;
+use \WilliamCosta\DatabaseManager\Pagination;
+
+class Testimony extends Api
+{
+    /**
      * getTestimonyItems
      * Método responsável por obter a renderização dos itens de depoimentos para a página
      * 
@@ -50,8 +50,8 @@
         //RETORNA OS DEPOIMENTOS
         return $itens;
     }
- 
-     /**
+
+    /**
      * getDetails
      * Método responsável por retornar os depoimentos cadastrados
      *
@@ -65,7 +65,7 @@
             'pagination' => parent::getPagination($request, $obPagination)
         ];
     }
-    
+
     /**
      * getTestimony
      * Método responsável por retornar os detalhes de um depoimento
@@ -77,7 +77,7 @@
     public static function getTestimony($request, $id)
     {
         //VALIDA O ID DO DEPOIMENTO
-        if(!is_numeric($id)){
+        if (!is_numeric($id)) {
             throw new \Exception("O id '" .  $id  . "'  não é válido", 400);
         }
 
@@ -87,8 +87,8 @@
 
 
         //VALIDA SE O DEPOIMENTO EXISTE
-        if(!$obTestimony instanceof EntityTestimony) {
-            throw new \Exception("O depoimento " . $id. " não foi encontrado", 404);
+        if (!$obTestimony instanceof EntityTestimony) {
+            throw new \Exception("O depoimento " . $id . " não foi encontrado", 404);
         }
         //RETORNA OS DETALHES DO DEPOIMENTO
         return  [
@@ -98,7 +98,7 @@
             'date'     => $obTestimony->date
         ];
     }
-    
+
     /**
      * setNewTestimony
      * Método responsável por cadastrar um novo depoimento
@@ -109,13 +109,23 @@
     {
         $postVars = $request->getPostVars();
 
-        echo "<pre>";
-        print_r($postVars);
-        echo "</pre>";exit;
+        //VALIDA OS CAMPOS OBRIGATÓRIOS
+        if (!isset($postVars['username']) || !isset($postVars['message'])) {
+            throw new \Exception("Os campos 'nome' e 'mansagem' são obrigatórios", 400);
+        }
+
+        //NOVO DEPOIMENTO
+        $obTestimony = new EntityTestimony;
+        $obTestimony->username = $postVars['username'];
+        $obTestimony->message = $postVars['message'];
+        $obTestimony->cadastrar();
+
+        //RETORNA OS DETALHES DO DEPOIMENTO CADASTRADO
         return [
-            'sucesso' => true
+            'id' => (int)$obTestimony->id,
+            'username'  => $obTestimony->username,
+            'message'  => $obTestimony->message,
+            'date'     => $obTestimony->date
         ];
     }
- }
-
-//parei nos 27:23 
+}

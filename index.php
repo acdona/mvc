@@ -33,10 +33,5 @@ include __DIR__ . '/routes/api.php';
 $obRouter->run()->sendResponse();
 
 
-
-
-
-
-
 // Descarrega e desativa o buffer de saída
 ob_end_flush();
