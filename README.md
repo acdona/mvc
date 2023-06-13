@@ -162,7 +162,8 @@ composer require william-costa/database-manager
 - Criando arquivo routes/api/v1/testimonies.php
 - criando arquivo app/Controllers/Api/Testimony.php
 - criação do middliewaew /app/Http/Middleware/Api.php
-
+## HTTP Basic Auth - Autenticando APIs
+- criação do arquivo app\/http/Middleware/UserBasicAuth.php
 
 
 #

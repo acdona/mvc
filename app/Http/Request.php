@@ -6,7 +6,7 @@ namespace App\http;
 
 class Request
 {
-    
+
     /**
      * router
      * Instância do router
@@ -14,7 +14,7 @@ class Request
      * @var Router
      */
     private $router;
-    
+
     /**
      * httpMethod
      * Método HTTP da requisição 
@@ -64,12 +64,32 @@ class Request
     {
         $this->router = $router;
         $this->queryParams = $_GET ?? [];
-        $this->postVars = $_POST ?? [];
+        // $this->postVars = $_POST ?? [];
         $this->headers = getallheaders();
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] ?? '';
         $this->setUri();
+        $this->setPostVars(); //excluiu acima colocou esse
     }
     
+    /**
+     * setPostVars
+     * Método responsável por definir as variáveis do POST
+     */
+    private function setPostVars()
+    {
+        //VERIFICA O MÉTIDO DA REQUISIÇÃO
+        if($this->httpMethod == 'GET') return false;
+
+        //POST PADRÃO
+        $this->postVars = $_POST ?? [];
+
+        //POST JSON
+        $inputRaw = file_get_contents('php://input');
+        $this->postVars = (strlen($inputRaw) && empty($_POST)) ? json_decode($inputRaw, true) : $this->postVars;
+
+        
+    }
+
     /**
      * getRouter
      * Método responsével por retornar a instância de Router
@@ -80,7 +100,7 @@ class Request
     {
         return $this->router;
     }
-    
+
     /**
      * setUri
      * Método responsável por definir a URI
@@ -95,9 +115,8 @@ class Request
         //REMOVE GETS DA URI
         $xURI = explode('?', $this->uri);
         $this->uri = $xURI[0];
-
     }
-    
+
     /**
      * getHttpMethod
      * Método responsável por retornar o método HTTP da requisição
@@ -109,7 +128,7 @@ class Request
     {
         return $this->httpMethod;
     }
-    
+
     /**
      * getUri
      * Método responsável por retornar a URI da requisição
@@ -120,7 +139,7 @@ class Request
     {
         return $this->uri;
     }
-    
+
     /**
      * getQueryParams
      * Método responsável por retornar os parâmetros da requisição
@@ -130,7 +149,7 @@ class Request
     {
         return $this->queryParams;
     }
-    
+
     /**
      * getPostVars
      * Método resonsável por retornar as variáveis POST da requisição
@@ -138,11 +157,11 @@ class Request
      *
      * @return void
      */
-    public function getPostVars() 
+    public function getPostVars()
     {
         return $this->postVars;
     }
-    
+
     /**
      * getHeaders
      * Método responsável por retornar os headers da requisição

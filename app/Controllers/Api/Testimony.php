@@ -98,5 +98,24 @@
             'date'     => $obTestimony->date
         ];
     }
+    
+    /**
+     * setNewTestimony
+     * Método responsável por cadastrar um novo depoimento
+     *
+     * @param  Request $request
+     */
+    public static function setNewTestimony($request)
+    {
+        $postVars = $request->getPostVars();
+
+        echo "<pre>";
+        print_r($postVars);
+        echo "</pre>";exit;
+        return [
+            'sucesso' => true
+        ];
+    }
  }
 
+//parei nos 27:23 
