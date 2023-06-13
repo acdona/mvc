@@ -41,12 +41,12 @@
      */
     private function basicAuth($request)
     {
-        
         //VERIFICA O USUÁRIO RECEBIDO
         if($obUser = $this->getBasicAuthUser())
         {
-           $_POST['username'] =  $obUser;
-        //    $request->username = $obUser;
+                       
+            $request->user = $obUser;
+         
             return true;
         }
 

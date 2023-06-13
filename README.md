@@ -164,6 +164,8 @@ composer require william-costa/database-manager
 - criação do middliewaew /app/Http/Middleware/Api.php
 ## HTTP Basic Auth - Autenticando APIs
 - criação do arquivo app\/http/Middleware/UserBasicAuth.php
+- Criando arquivo routes/api/v1/users.php
+- criando arquivo app/Controllers/Api/User.php
 
 
 #

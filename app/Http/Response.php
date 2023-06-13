@@ -68,7 +68,7 @@ class Response
     public function setContentType($contentType)
     {
         $this->contentType = $contentType;  
-        $this->addHeader('ContentType', $contentType)           ;
+        $this->addHeader('ContentType', $contentType);
     }
     
     /**

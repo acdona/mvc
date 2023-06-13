@@ -60,16 +60,18 @@ class Request
      */
     private $headers = [];
 
+    public $user = [];
+
     public function __construct($router)
     {
         $this->router = $router;
         $this->queryParams = $_GET ?? [];
-        // $this->postVars = $_POST ?? [];
         $this->headers = getallheaders();
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] ?? '';
         $this->setUri();
         $this->setPostVars(); //excluiu acima colocou esse
     }
+    
     
     /**
      * setPostVars
@@ -173,4 +175,5 @@ class Request
     {
         return $this->headers;
     }
+
 }
