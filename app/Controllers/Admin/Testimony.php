@@ -31,7 +31,7 @@ class Testimony extends Page
         $currentPage = $queryParams['page'] ?? 1;
 
         //INSTÂNCIA DE PAGINAÇÃO
-        $obPagination = new Pagination($totalAmount, $currentPage, 10);
+        $obPagination = new Pagination($totalAmount, $currentPage, 5);
 
 
         //RESULTADOS DA PÁGINA

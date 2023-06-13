@@ -152,6 +152,19 @@ composer require william-costa/database-manager
 - criando arquivos de views app\Views\admin\modules\users\form.httml
 - criando arquivos de views app\Views\admin\modules\users\delete.httml
 
+### 020 Implementando APIs
+- Criação do arquivo routes/api.php
+- Criação da pasta routes/api
+- Criação da pasta routes/api/v1
+- Criação do arquivo routes/api/v1/default.php
+- Criando a pasta app/Controllers/Api
+- Criando a conroller app/Controllers/Api/Api.php
+- Criando arquivo routes/api/v1/testimonies.php
+- criando arquivo app/Controllers/Api/Testimony.php
+- criação do middliewaew /app/Http/Middleware/Api.php
+
+
+
 #
 
 ## Instalação
