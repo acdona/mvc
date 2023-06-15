@@ -34,16 +34,16 @@ class User extends Api
 
 
         //RESULTADOS DA PÁGINA
-        $results = EntityUser::getUsers(null, 'id DESC', $obPagination->getLimit());
+        $results = EntityUser::getUsers(null, 'id ASC', $obPagination->getLimit());
 
         //RENDERIZA O ITEM
         while ($obUser = $results->fetchObject(EntityUser::class)) {
 
             // VIEW DE USUÁRIOS
             $itens[] = [
-                'id' => (int)$obUser->id,
+                'id'        => (int)$obUser->id,
                 'username'  => $obUser->username,
-                'email'  => $obUser->email
+                'email'     => $obUser->email
             ];
         }
 
@@ -90,6 +90,7 @@ class User extends Api
         if (!$obUser instanceof EntityUser) {
             throw new \Exception("O usuário " . $id . " não foi encontrado", 404);
         }
+        
         //RETORNA OS DETALHES DO USUÁRIO
         return  [
             'id' => (int)$obUser->id,

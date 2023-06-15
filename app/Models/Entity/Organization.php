@@ -10,16 +10,13 @@ class Organization
     private $id = 1;
 
     /** @var string $name */
-    private $name = "ACD WEBDEV";
+    private $name = "ACD WEBDEV -> vem da model";
 
     /** @var string $site */
-    private $site = 'https://antoniocarlosdona';
+    private $site = 'https://antoniocarlosdona.com.br -> vem da model';
 
     /** @var string $description */
-    private $description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iusto aperiam voluptate consequuntur, id officiis soluta asperiores repudiandae dolor perspiciatis illum ab possimus nobis! Eaque placeat asperiores sed ex fugiat.';
-
-    /** @var string $situation */
-    private $situation = 'Cadastro Ativo';
+    private $description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iusto aperiam voluptate consequuntur, id officiis soluta asperiores repudiandae dolor perspiciatis illum ab possimus nobis! Eaque placeat asperiores sed ex fugiat. -> também vem da model';
     
     /**
      * getId
@@ -60,14 +57,5 @@ class Organization
     {
         return $this->description;
     }
-        
-    /**
-     * getSituation
-     *
-     * @return string
-     */
-    public function getSituation(): string
-    {
-        return $this->situation;
-    }
+
 }

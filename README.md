@@ -170,6 +170,12 @@ composer require william-costa/database-manager
 ### 021 Melhorando paginação
 #
 
+### 022 Instruções do MVC 
+1 - Criando a controller
+2 - Criando a Model
+3 - Criando a View
+
+
 ## Instalação
 
 ### Pré requisitos

@@ -67,9 +67,6 @@ class View
 
         // Chaves do array e variáveis
         $keys = array_keys($vars);
-        // $keys = array_map(function($item){
-        //     return '{{' . $item . '}}';
-        // }, $keys);
 
         // transformando em arrow function
         $transformedKeys = array_map(fn($item) => '{{' . $item . '}}', $keys);

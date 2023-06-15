@@ -33,8 +33,7 @@ class About extends Page
         $content = View::render('pages/about', [
             'name'        => $obOrganization->getName(),
             'description' => $obOrganization->getDescription(),
-            'site'        => $obOrganization->getSite(),
-            'situation'   => $obOrganization->getSituation()
+            'site'        => $obOrganization->getSite()
         ]);
 
         // Retorna a VIEW da página

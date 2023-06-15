@@ -206,9 +206,9 @@ class Router
 
         //FATIA A URL COM O PREFIXO
         $xUri = strlen($this->prefix) ? explode($this->prefix, $uri) : [$uri];
-
+        
         //RETORNA A URI SEM PREFIXO
-        return rtrim(end($xUri),'');
+        return rtrim(end($xUri),'/');
     }
 
     /**
