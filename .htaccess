@@ -3,4 +3,16 @@ RewriteEngine on
 
 # REGRA DE REWRITE TUDO PARA O INDEX
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ ./index.php [QSA,NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+
+ErrorDocument 403 http://localhost/mvc/
+
+Options All -Indexes
+DirectoryIndex index.php
+
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>

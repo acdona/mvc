@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Entity;
 
-use \WilliamCosta\DatabaseManager\Database;
+use \App\Core\Database;
 
 class User
 {

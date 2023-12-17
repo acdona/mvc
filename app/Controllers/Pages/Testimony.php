@@ -6,7 +6,7 @@ namespace App\Controllers\Pages;
 
 use \App\Core\View;
 use \App\Models\Entity\Testimony as EntityTestimony;
-use \WilliamCosta\DatabaseManager\Pagination;
+use \App\Core\Pagination;
 
 /**
  * ACD || Testimony Class Controller

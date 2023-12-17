@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers\Api;
 
 use \App\Models\Entity\User as EntityUser;
-use \WilliamCosta\DatabaseManager\Pagination;
+use \App\Core\Pagination;
 
 class User extends Api
 {

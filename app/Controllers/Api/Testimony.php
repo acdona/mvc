@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers\Api;
 
 use \App\Models\Entity\Testimony as EntityTestimony;
-use \WilliamCosta\DatabaseManager\Pagination;
+use \App\Core\Pagination;
 
 class Testimony extends Api
 {

@@ -69,7 +69,7 @@ class Request
         $this->headers = getallheaders();
         $this->httpMethod = $_SERVER['REQUEST_METHOD'] ?? '';
         $this->setUri();
-        $this->setPostVars(); //excluiu acima colocou esse
+        $this->setPostVars(); 
     }
     
     
@@ -79,7 +79,7 @@ class Request
      */
     private function setPostVars()
     {
-        //VERIFICA O MÉTIDO DA REQUISIÇÃO
+        //VERIFICA O MÉTODO DA REQUISIÇÃO
         if($this->httpMethod == 'GET') return false;
 
         //POST PADRÃO

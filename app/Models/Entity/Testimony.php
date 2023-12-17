@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Entity;
 
-use \WilliamCosta\DatabaseManager\Database;
+use \App\Core\Database;
 
 /**
  * ACD || Testimony . Responsible for  Testimony page
@@ -60,7 +60,7 @@ class Testimony
         //INSERE DEPOIMENTO NO BANCO DE DADOS
         $this->id = (new Database('testimonies'))->insert([
             'username' => $this->username,
-            'message' => $this->message,
+            'message' =>  str_textarea($this->message),
             'date' => $this->date
         ]);
 

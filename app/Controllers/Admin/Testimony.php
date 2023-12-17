@@ -6,7 +6,7 @@ namespace App\Controllers\Admin;
 
 use \App\Core\View;
 use \App\Models\Entity\Testimony as EntityTestimony;
-use \WilliamCosta\DatabaseManager\Pagination;
+use \App\Core\Pagination;
 
 class Testimony extends Page
 {
@@ -108,7 +108,7 @@ class Testimony extends Page
         //NOVA INSTANCIA DE DEPOIMENTO
         $obTestimony = new EntityTestimony;
         $obTestimony->username = $postVars['username'] ?? '';
-        $obTestimony->message = $postVars['message'] ?? '';
+        $obTestimony->message = strip_tags($postVars['message']) ?? '';
         $obTestimony->cadastrar();
 
         //REDIRECIONA O USUÁRIO
@@ -166,7 +166,7 @@ class Testimony extends Page
         $content = View::render('admin/modules/testimonies/form', [
             'title' => 'Editar depoimento',
             'username' => $obTestimony->username,
-            'message' => $obTestimony->message,
+            'message' => strip_tags($obTestimony->message),
             'status' => self::getStatus($request)
         ]);
 

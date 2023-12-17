@@ -14,8 +14,8 @@ date_default_timezone_set('America/Sao_Paulo');
 require __DIR__ . "/../vendor/autoload.php";
 
 use \App\Core\View;
-use \WilliamCosta\DotEnv\Environment;
-use \WilliamCosta\DatabaseManager\Database;
+use \App\Core\Environment;
+use \App\Core\Database;
 use \App\Http\Middleware\Queue as MiddlewareQueue;
 
 //CARREGA VARIÁVEIS DE AMBIENTE
